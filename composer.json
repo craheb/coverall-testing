@@ -1,0 +1,26 @@
+{
+    "name": "coverall-test",
+    "description": "Testing coverall features",
+    "authors": [
+        {
+            "name": "Chris Raheb",
+            "email": "chrisraheb@quickenloans.com"
+        }
+    ],
+    "require": {
+        "php": "7.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoverallTest\\": [ "src" ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CoverallTest\\": [ "test" ]
+        }
+    }
+}

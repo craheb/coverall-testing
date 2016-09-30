@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+    <phpunit
+        backupGlobals="false"
+        backupStaticAttributes="false"
+        bootstrap="bootstrap.php"
+        cacheTokens="false"
+        colors="false"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        forceCoversAnnotation="false"
+        mapTestClassNameToCoveredClassName="false"
+        printerClass="PHPUnit_TextUI_ResultPrinter"
+        processIsolation="false"
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+        strict="false"
+        timeoutForSmallTests="2"
+        verbose="true">
+
+    <logging>
+        <log type="coverage-html" target="../build/coverage" charset="UTF-8" yui="true" highlight="false" lowUpperBound="50" highLowerBound="90" />
+        <log type="coverage-clover" target="../build/clover.xml" />
+        <log type="testdox-text" target="../build/testdox.txt" />
+        <log type="testdox-html" target="../build/testdox.html" />
+        <log type="junit" target="../build/junit.xml" />
+    </logging>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory>../src/</directory>
+            <exclude>
+                <file></file>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <php>
+        <ini name="display_errors" value="On" />
+        <ini name="error_reporting" value="E_ALL" />
+        <ini name="memory_limit" value="3G" />
+        <ini name="zend.enable_gc" value="0" />
+    </php>
+</phpunit>
