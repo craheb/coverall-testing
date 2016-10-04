@@ -1,3 +1,4 @@
 build
 tmp
 vendor
+.coveralls.yml
