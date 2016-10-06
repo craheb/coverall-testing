@@ -3,6 +3,9 @@ namespace CoverallTest;
 
 class Index
 {
+    /*
+     * Addition
+     */
     public function add($a, $b)
     {
         return $a + $b;

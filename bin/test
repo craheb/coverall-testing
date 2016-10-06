@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+DIR=$( cd "$( dirname "$0" )" && pwd )
+
+BIN="$DIR/../vendor/bin/phpunit"
+PARAMETERS=""
+
+for var in "$@"
+do
+    PARAMETERS="$PARAMETERS $var"
+done
+
+echo "RUNNING TESTS"
+
+$BIN$PARAMETERS

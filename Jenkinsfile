@@ -5,9 +5,9 @@ currentBuild.result = "SUCCESS"
 node {
     try {
 
-        stage 'Run tests in Docker'
+        stage 'Running install and tests'
 
-            env.BUILD_COMMAND = "vendor/bin/phpunit tests"
+            env.BUILD_COMMAND = "bin/install && bin/test"
     }
 
     catch (err) {
