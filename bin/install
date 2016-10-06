@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+set -e
+
+DIR=$( cd "$( dirname "$0" )" && pwd )
+
+COMPOSER="$DIR/composer"
+UPDATE="$COMPOSER update --prefer-dist --no-interaction --ansi --optimize-autoloader --profile --no-progress"
+INSTALL="$COMPOSER install --prefer-dist --no-interaction --ansi --optimize-autoloader --profile --no-progress"
+COMPOSER_SHOW_INSTALLED="$COMPOSER show --installed"
+
+echo "INSTALLING COMPOSER"
+
+# Download & Update Composer
+if [ ! -f "$DIR/composer" ]; then
+    curl --silent http://composer/installer | sh -s -- "$DIR/composer"
+else
+    echo "Composer is already installed."
+fi
+
+echo "RUNNING COMPOSER"
+
+# Determine Action
+if [[ "$1" = '--update' ]] ; then
+    $COMPOSER self-update
+    COMPOSER="$UPDATE"
+elif [[ "$1" = '--dev' ]] ; then
+    COMPOSER="$INSTALL"
+else
+    COMPOSER="$INSTALL --no-dev"
+fi
+
+$COMPOSER
+
+# Show Installed Packages
+if [ -n "$HAL_ENVIRONMENT" ]; then
+
+    echo "LISTING INSTALLED PACKAGES"
+
+    $COMPOSER_SHOW_INSTALLED
+fi
